@@ -10,8 +10,8 @@
     <!-- Open Graph 메타태그 -->
     <meta property="og:title" content="KaiCA 프로젝트 - 에듀테크 기반 K-문화 교육 기술 혁명">
     <meta property="og:description" content="AI와 XR 기술로 재해석된 K-문화 교육 플랫폼">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">  
+    <meta property="og:type" content="video">
+    <meta property="og:video" content="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCAhero.mp4">
     
     <!-- 폰트 및 아이콘 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -260,7 +260,7 @@
             transform: scale(1.1);
         }
         
-        /* 히어로 섹션 - 이미지로 변경 */
+        /* 히어로 섹션 - 비디오로 교체 */
         .hero {
             padding-top: 150px;
             padding-bottom: 100px;
@@ -342,7 +342,7 @@
             margin-bottom: 40px;
         }
         
-        .hero-image-container {
+        .hero-video-container {
             position: relative;
             height: 400px;
             border-radius: 20px;
@@ -354,7 +354,7 @@
             background: var(--gradient-neon);
         }
         
-        .hero-image-container:before {
+        .hero-video-container:before {
             content: '';
             position: absolute;
             top: -5px;
@@ -368,11 +368,11 @@
             opacity: 0.7;
         }
         
-        .hero-image-container:hover {
+        .hero-video-container:hover {
             transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         }
         
-        .hero-image {
+        .hero-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -426,7 +426,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        /* 프로젝트 개요 섹션 - 이미지 추가 */
+        /* 프로젝트 개요 섹션 */
         .overview {
             background-color: var(--light-bg);
             position: relative;
@@ -536,48 +536,6 @@
         
         .visual-card p {
             transition: color 0.4s ease;
-        }
-        
-        /* 추가 이미지 섹션 */
-        .additional-images {
-            padding: 60px 0;
-            background-color: var(--white);
-        }
-        
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .image-item {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease;
-        }
-        
-        .image-item:hover {
-            transform: translateY(-10px);
-        }
-        
-        .image-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .image-caption {
-            padding: 20px;
-            background: var(--light-bg);
-            text-align: center;
-        }
-        
-        .image-caption h4 {
-            color: var(--primary-blue);
-            margin-bottom: 10px;
         }
         
         /* 기술 아키텍처 섹션 */
@@ -1262,8 +1220,7 @@
         @media (max-width: 992px) {
             .hero-content,
             .overview-content,
-            .xr-content,
-            .image-grid {
+            .xr-content {
                 grid-template-columns: 1fr;
             }
             
@@ -1295,11 +1252,6 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-image-container,
-            .xr-demo {
-                height: 350px;
             }
         }
         
@@ -1341,12 +1293,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .hero-image-container {
+            .hero-video-container {
                 height: 300px;
-            }
-            
-            .image-item img {
-                height: 250px;
             }
         }
         
@@ -1416,6 +1364,17 @@
         .floating {
             animation: float 3s ease-in-out infinite;
         }
+        
+        /* 비디오 오버레이 */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 31, 94, 0.2) 0%, rgba(26, 58, 157, 0.2) 100%);
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -1463,7 +1422,7 @@
         </ul>
     </div>
     
-    <!-- 히어로 섹션 - 이미지로 변경 -->
+    <!-- 히어로 섹션 - 비디오로 교체 -->
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content">
@@ -1480,9 +1439,14 @@
                         <a href="https://w-kpop.com/" target="_blank" class="partner-logo">WKC</a>
                     </div>
                 </div>
-                <div class="hero-image-container floating">
-                    <!-- 히어로 이미지로 변경 -->
-                    <img src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCA.jpg" alt="KaiCA 프로젝트 히어로 이미지" class="hero-image">
+                <div class="hero-video-container floating">
+                    <!-- 비디오 자동 재생, 무음, 루프 설정 -->
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCAhero.mp4" type="video/mp4">
+                        <!-- 대체 이미지 -->
+                        <img src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/XR.png" alt="KaiCA 프로젝트 히어로 비디오 대체 이미지">
+                    </video>
+                    <div class="video-overlay"></div>
                 </div>
             </div>
         </div>
@@ -1540,34 +1504,6 @@
                         <i class="fas fa-expand-arrows-alt"></i>
                         <h4>글로벌 확장</h4>
                         <p>한국에서 검증된 모델을 기반으로 세계 시장 진출</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 추가 이미지 섹션 -->
-    <section class="section additional-images">
-        <div class="container">
-            <div class="section-title">
-                <h2>KaiCA 프로젝트 비주얼</h2>
-                <p>에듀테크와 K-문화의 융합을 시각적으로 경험하세요</p>
-            </div>
-            
-            <div class="image-grid">
-                <div class="image-item">
-                    <img src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCA(1).jpg" alt="KaiCA 프로젝트 콘셉트 이미지 1">
-                    <div class="image-caption">
-                        <h4>XR 기반 K-문화 교육</h4>
-                        <p>가상현실을 활용한 몰입형 학습 환경</p>
-                    </div>
-                </div>
-                
-                <div class="image-grid">
-                    <img src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCA(2).jpg" alt="KaiCA 프로젝트 콘셉트 이미지 2">
-                    <div class="image-caption">
-                        <h4>AI 맞춤형 학습 시스템</h4>
-                        <p>개인별 최적화된 교육 경로 제공</p>
                     </div>
                 </div>
             </div>
@@ -1645,7 +1581,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>XR 몰입형 교육 환경</h2>
-                <p>가상현실(VR), 증강현실(AR), 확장현실(XR) 기술을 활용한 체험형 K-문화 교육</p>
+                <p>가상현실(VR)과 증강현실(AR) 기술을 활용한 체험형 K-문화 교육</p>
             </div>
             
             <div class="xr-content">
@@ -1978,6 +1914,29 @@
                     });
                 }
             });
+        });
+        
+        // 비디오 자동 재생 처리
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroVideo = document.querySelector('.hero-video');
+            if (heroVideo) {
+                // 비디오 자동 재생 시도
+                const playPromise = heroVideo.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        // 자동 재생이 실패한 경우 대체 이미지 표시
+                        console.log('비디오 자동 재생이 차단되었습니다:', error);
+                        const videoContainer = document.querySelector('.hero-video-container');
+                        if (videoContainer) {
+                            videoContainer.innerHTML = `
+                                <img src="https://raw.githubusercontent.com/THEBESTYS/KaiCA/main/KaiCAhero.mp4" alt="KaiCA 프로젝트 히어로 이미지" style="width:100%; height:100%; object-fit:cover;">
+                                <div class="video-overlay"></div>
+                            `;
+                        }
+                    });
+                }
+            }
         });
     </script>
 </body>
