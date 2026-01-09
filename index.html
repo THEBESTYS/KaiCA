@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skywork - AI 플랫폼</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 헤더 및 네비게이션 */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #6366f1;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        .cta-button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2563eb;
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            background-color: #dbeafe;
+            border-radius: 12px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-image i {
+            font-size: 8rem;
+            color: #3b82f6;
+            opacity: 0.8;
+        }
+
+        /* 기능 섹션 */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #eff6ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon i {
+            font-size: 1.8rem;
+            color: #3b82f6;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+
+        /* 사용 사례 섹션 */
+        .use-cases {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .use-case-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .use-case-img {
+            height: 180px;
+            background-color: #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .use-case-img i {
+            font-size: 4rem;
+            color: #3b82f6;
+            opacity: 0.8;
+        }
+
+        .use-case-content {
+            padding: 25px;
+        }
+
+        .use-case-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        /* 팀 소개 섹션 */
+        .team {
+            padding: 80px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #dbeafe;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #3b82f6;
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+
+        .team-member p {
+            color: #64748b;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #3b82f6;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #374151;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 및 네비게이션 -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cloud"></i>
+                <span>Skywork</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#features">기능</a></li>
+                    <li><a href="#use-cases">사용 사례</a></li>
+                    <li><a href="#team">팀</a></li>
+                    <li><a href="#pricing">가격</a></li>
+                    <li><a href="#docs">문서</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button">시작하기</button>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>AI 기반 클라우드 플랫폼으로 비즈니스 혁신</h1>
+                <p>Skywork는 기업을 위한 최신 AI 기술을 제공하는 클라우드 플랫폼입니다. 머신러닝 모델 배포부터 데이터 분석까지, 모든 것을 하나의 플랫폼에서 경험하세요.</p>
+                <div style="display: flex; gap: 15px;">
+                    <button class="cta-button" style="background-color: #6366f1;">무료 체험 시작</button>
+                    <button class="cta-button" style="background-color: transparent; color: #3b82f6; border: 2px solid #3b82f6;">데모 보기</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-brain"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기능 섹션 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>주요 기능</h2>
+                <p>Skywork 플랫폼의 강력한 기능들을 확인해보세요. 비즈니스 요구사항에 맞춰 유연하게 사용할 수 있습니다.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI 모델 배포</h3>
+                    <p>사전 학습된 모델이나 사용자 정의 모델을 쉽게 배포하고 관리할 수 있습니다. 실시간 추론과 배치 처리 모두 지원합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>데이터 분석</h3>
+                    <p>대규모 데이터셋을 실시간으로 분석하고 시각화할 수 있는 강력한 도구를 제공합니다. 인사이트 발견을 가속화하세요.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>엔터프라이즈 보안</h3>
+                    <p>최고 수준의 보안과 규정 준수를 제공합니다. 데이터 암호화, 접근 제어, 감사 로그 등 기업 요구사항을 충족합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 사용 사례 섹션 -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <div class="section-title">
+                <h2>사용 사례</h2>
+                <p>다양한 산업 분야에서 Skywork 플랫폼이 어떻게 활용되고 있는지 확인해보세요.</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-img" style="background-color: #f0f9ff;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h3>전자상거래</h3>
+                        <p>개인화된 추천 시스템, 고객 세분화, 수요 예측 등을 통해 전자상거업 비즈니스를 혁신하세요.</p>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-img" style="background-color: #f0fdf4;">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h3>헬스케어</h3>
+                        <p>의료 영상 분석, 질병 예측 모델, 환자 데이터 관리 등을 통해 의료 서비스의 질을 향상시킵니다.</p>
+                    </div>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-img" style="background-color: #fefce8;">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="use-case-content">
+                        <h3>금융 서비스</h3>
+                        <p>사기 탐지, 신용 평가, 알고리즘 트레이딩 등 금융 서비스에 AI 기술을 적용하여 효율성을 극대화합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 팀 소개 섹션 -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>우리 팀</h2>
+                <p>Skywork를 이끌고 있는 전문가들을 만나보세요.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>김지현</h4>
+                    <p>CEO / 공동창립자</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>이민수</h4>
+                    <p>기술 이사</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>박서연</h4>
+                    <p>제품 디렉터</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>정태호</h4>
+                    <p>머신러닝 엔지니어링 리드</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Skywork</h3>
+                    <p>AI 기반 클라우드 플랫폼으로 비즈니스의 미래를 만들어갑니다.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>제품</h3>
+                    <ul>
+                        <li><a href="#">기능</a></li>
+                        <li><a href="#">가격</a></li>
+                        <li><a href="#">API 문서</a></li>
+                        <li><a href="#">시스템 상태</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>회사</h3>
+                    <ul>
+                        <li><a href="#">소개</a></li>
+                        <li><a href="#">블로그</a></li>
+                        <li><a href="#">채용</a></li>
+                        <li><a href="#">연락처</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>연락처</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@skywork.ai</li>
+                        <li><i class="fas fa-phone"></i> 02-1234-5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 서울특별시 강남구 테헤란로 123</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Skywork. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 간단한 JavaScript 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            // 부드러운 스크롤
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // CTA 버튼 클릭 이벤트
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    if(this.textContent.includes('시작하기') || this.textContent.includes('체험')) {
+                        alert('Skywork 무료 체험을 시작합니다! 잠시 후 등록 페이지로 이동합니다.');
+                    } else if(this.textContent.includes('데모')) {
+                        alert('Skywork 데모를 보여드립니다!');
+                    }
+                });
+            });
+            
+            // 헤더 스크롤 효과
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if(window.scrollY > 100) {
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
